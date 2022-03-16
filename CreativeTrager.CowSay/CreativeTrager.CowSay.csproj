@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <PackageVersion>0.0.1</PackageVersion>
+        <Copyright>Copyright (c) CreativeTrager 2022</Copyright>
+        <PublicSign>false</PublicSign>
+        <Authors>CreativeTrager</Authors>
+        <LangVersion>10</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Remove="CreativeTragerSign.snk" />
+    </ItemGroup>
+
+</Project>
