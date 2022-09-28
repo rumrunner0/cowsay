@@ -9,13 +9,13 @@ public abstract class RepeatingEntity : IRepeatingEntity
 	private const int _MIN_PHRASE_LENGTH = 1;
 	private const int _MAX_PHRASE_LENGTH = 60;
 
-	private string? _lastPhrase;
+	private string? _lastPhrase = null;
 
 	#endregion
 
 	#region Interface
 
-	public string Repeat() => Repeat(phrase: _lastPhrase);
+	public string Repeat() => Repeat(phrase: this._lastPhrase ?? this.DefaultPhrase);
 	public string Repeat(string? phrase) 
 	{
 		ValidatePhrase(phrase);
@@ -27,8 +27,8 @@ public abstract class RepeatingEntity : IRepeatingEntity
 			.AppendLine($@"< {phrase} >")
 			.AppendLine($@"  {CreateString(symbol: '=', phraseLength)}  ")
 
-			.Append(CreateStickWithOffset(offsetLength: phraseLength + 4))
-			.Append(CreateAppearanceWithOffset(offsetLength: phraseLength + 7))
+			.Append(CreateStickWithOffset(offsetLength: phraseLength+4))
+			.Append(CreateAppearanceWithOffset(offsetLength: phraseLength+7))
 
 			.ToString();
 	}
@@ -37,25 +37,29 @@ public abstract class RepeatingEntity : IRepeatingEntity
 
 	#region Utils
 
-	protected abstract string DefaultPhrase { get; }
-
-	protected string? LastPhrase 
-	{
-		get => _lastPhrase;
-		set 
-		{
-			ValidatePhrase(value);
-			_lastPhrase = value;
-		}
-	}
-
-	protected abstract string CreateAppearance();
+	public RepeatingEntity() { }
+	public RepeatingEntity(string phrase)
+		=> this.LastPhrase = phrase;
 
 	private string CreateAppearanceWithOffset(int offsetLength) 
 	{
 		var offset = CreateString(symbol: ' ', offsetLength);
 		return $"{offset}{CreateAppearance().Replace(oldValue: Environment.NewLine, newValue: $"{Environment.NewLine}{offset}")}";
 	}
+
+	protected string? LastPhrase 
+	{
+		get => this._lastPhrase;
+		private init 
+		{
+			ValidatePhrase(value);
+			this._lastPhrase = value;
+		}
+	}
+
+	protected abstract string DefaultPhrase { get; }
+
+	protected abstract string CreateAppearance();
 
 	private static string CreateStickWithOffset(int offsetLength) 
 	{
@@ -75,33 +79,26 @@ public abstract class RepeatingEntity : IRepeatingEntity
 	{
 		if(value is null) 
 		{
-			throw new ArgumentNullException(
-				paramName: nameof(value),
-				message: new StringBuilder()
-					.Append($"Phrase {nameof(value)} can't be NULL! ")
-					.Append($"Maybe you should override the {nameof(DefaultPhrase)} ")
-					.Append($"property and set the specific value to be returned.")
-					.ToString()
+			throw new ArgumentNullException( paramName: nameof(value), message:
+				$"Phrase {nameof(value)} can't be NULL! " +
+				$"Maybe you should override the {nameof(RepeatingEntity.DefaultPhrase)} " +
+				$"property and set the specific value to be returned."
 			);
 		}
+
 		if(value.Length < _MIN_PHRASE_LENGTH) 
 		{
-			throw new ArgumentOutOfRangeException(
-				paramName: nameof(value),
-				message: new StringBuilder()
-					.Append($"Phrase row length can't be less than {_MIN_PHRASE_LENGTH}! ")
-					.Append($"Available row length is {_MIN_PHRASE_LENGTH}-{_MAX_PHRASE_LENGTH}.")
-					.ToString()
+			throw new ArgumentOutOfRangeException(paramName: nameof(value), message:
+				$"Phrase row length can't be less than {RepeatingEntity._MIN_PHRASE_LENGTH}! " +
+				$"Available row length is {RepeatingEntity._MIN_PHRASE_LENGTH}-{RepeatingEntity._MAX_PHRASE_LENGTH}."
 			);
 		}
+
 		if(value.Length > _MAX_PHRASE_LENGTH) 
 		{
-			throw new ArgumentOutOfRangeException(
-				paramName: nameof(value),
-				message: new StringBuilder()
-					.Append($"Phrase row length can't be greater than {_MAX_PHRASE_LENGTH}! ")
-					.Append($"Available row length is {_MIN_PHRASE_LENGTH}-{_MAX_PHRASE_LENGTH}.")
-					.ToString()
+			throw new ArgumentOutOfRangeException(paramName: nameof(value), message: 
+				$"Phrase row length can't be greater than {RepeatingEntity._MAX_PHRASE_LENGTH}! " +
+				$"Available row length is {RepeatingEntity._MIN_PHRASE_LENGTH}-{RepeatingEntity._MAX_PHRASE_LENGTH}."
 			);
 		}
 	}

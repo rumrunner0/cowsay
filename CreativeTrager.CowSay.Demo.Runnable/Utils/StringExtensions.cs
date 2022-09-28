@@ -1,4 +1,4 @@
-﻿namespace CreativeTrager.CowSay.Demo.Runnable;
+﻿namespace CreativeTrager.CowSay.Demo.Runnable.Utils;
 internal static class StringExtensions 
 {
 	internal static bool IsEmpty(this string value) 

@@ -1,68 +1,98 @@
-﻿using System.Globalization;
-using System.Text;
-using CreativeTrager.CowSay.Demo.Runnable;
+﻿using System.Text;
+using CreativeTrager.CowSay.Demo.Runnable.Utils;
 using CreativeTrager.CowSay.Library;
 using CreativeTrager.CowSay.Library.Related;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.SystemConsole.Themes;
 
 
 Console.InputEncoding =
 	Console.OutputEncoding =
-		Encoding.UTF8;
+		Encoding.Unicode;
+
+Log.Logger = new LoggerConfiguration()
+	.Enrich.FromLogContext()
+	.Enrich.WithMachineName()
+	.Enrich.WithProcessId().Enrich.WithProcessName()
+	.Enrich.WithThreadId().Enrich.WithThreadName()
+	.Enrich.WithEnvironmentName().Enrich.WithEnvironmentUserName()
+	.MinimumLevel.Is(LogEventLevel.Debug)
+	.WriteTo.Console(
+		theme: SystemConsoleTheme.Colored, 
+		outputTemplate:
+		"[{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} " +
+		"(machine <{MachineName}>) " +
+		"(process id:<{ProcessId}> name:<{ProcessName}>) " +
+		"(thread id:<{ThreadId}> name:<{ThreadName}>) " +
+		"(environment name:<{EnvironmentName}> username:<{EnvironmentUserName}>) " +
+		"(context <{SourceContext}>) " +
+		"{Level:u3}] {Message:lj} {Exception} " +
+		"{NewLine}")
+	.CreateLogger();
+
+Console.WriteLine("Лялялял");
+Log.Information(messageTemplate: "Application has been started");
 
 var input = default(string);
 if( args.Any()) 
 {
+	const int INVALID_INPUT_DATA_EXIT_CODE = 1;
 	if(args.Length > 1) 
 	{
-		Console.WriteLine(new StringBuilder()
-			.Append($"Oops! It seems you've passed more than one argument to the argument list. ")
-			.Append($"If your phrase has multiple words, you may have missed quotes (\"<phrase>\"). ")
-			.Append($"Please run the program again with single argument which will be your quoted phrase.")
-			.ToString()
+		Log.Warning(messageTemplate:
+			"Oops! It seems you've passed more than one argument to the argument list. " +
+			"If your phrase has multiple words, you may have missed quotes (\"<phrase>\"). " +
+			"Please run the program again with single argument which will be your quoted phrase"
 		);
 
-		Environment.Exit((int)EnvironmentExitCode.InvalidInputData);
+		Environment.Exit(exitCode: INVALID_INPUT_DATA_EXIT_CODE);
 	}
 
 	input = args.First();
 	if(input.IsEmptyOrWhitespace()) 
 	{
-		Console.WriteLine(new StringBuilder()
-			.Append($"Oops! It seems you haven't passed the phrase to repeat as first argument or passed something wrong! ")
-			.Append($"Please run the program again with single argument which will be your quoted phrase.")
-			.ToString()
+		Log.Warning(messageTemplate:
+			"Oops! It seems you haven't passed the phrase to repeat as first argument or passed something wrong! " +
+			"Please run the program again with single argument which will be your quoted phrase"
 		);
 
-		Environment.Exit((int)EnvironmentExitCode.InvalidInputData);
+		Environment.Exit(exitCode: INVALID_INPUT_DATA_EXIT_CODE);
 	}
 
-} else {
-
-	Console.WriteLine($"Hi there! Moo! I'm the ASCII Cow. Enter the phrase you wanna me to repeat. Moo!");
+} else 
+{
+	Log.Information(messageTemplate: "Hi there! Moo! I'm the ASCII Cow. Enter the phrase you wanna me to repeat. Moo!");
 
 	while(true) 
 	{
-		Console.Write($"Your phrase: ");
+		Log.Information(messageTemplate: "Your phrase: ");
 		input = Console.ReadLine();
+		Log.Information(messageTemplate: "You entered phrase \"{EnteredPhrase}\" using console interface", input);
+
 		if(input is null || input.IsEmptyOrWhitespace()) 
 		{
-			Console.WriteLine(new StringBuilder()
-				.Append($"Oops! It seems you've entered something wrong! ")
-				.Append($"{CultureInfo.InvariantCulture.TextInfo.ToTitleCase(nameof(input))} can't be NULL or empty or whitespace. ")
-				.Append($"Please enter the phrase again.")
-				.ToString()
+			Log.Warning(messageTemplate:
+				"Oops! It seems you've entered something wrong! " +
+				"{ParameterName} can't be null or empty or whitespace. " + 
+				"Please enter the phrase again",
+				propertyValue: nameof(input)
 			);
+
 			continue;
 		}
+
 		break;
 	}
+
 }
 
 {
 	var repeatingEntity = new RepeatingCow() as IRepeatingEntity;
 	var repeatedInput = repeatingEntity.Repeat(phrase: input);
-	Console.WriteLine(repeatedInput);
+	Log.Information(messageTemplate: "{NewLine}{RepeatedInput}", Environment.NewLine, repeatedInput);
 }
 
-Console.Write($"Press <Enter> to exit... ");
+Log.Information(messageTemplate: "Application has been stopped");
+Log.Information(messageTemplate: "Press <Enter> to exit...");
 Console.ReadLine();
