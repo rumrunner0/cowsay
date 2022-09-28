@@ -31,7 +31,6 @@ Log.Logger = new LoggerConfiguration()
 		"{NewLine}")
 	.CreateLogger();
 
-Console.WriteLine("Лялялял");
 Log.Information(messageTemplate: "Application has been started");
 
 var input = default(string);
