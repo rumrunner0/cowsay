@@ -1,27 +1,21 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 
 
-namespace CreativeTrager.CowSay.Base;
+namespace CreativeTrager.CowSay.Library.Related;
 public abstract class RepeatingEntity : IRepeatingEntity 
 {
-	private const int _cMinPhraseLength = 1;
-	private const int _cMaxPhraseLength = 60;
+	#region Data
+
+	private const int _MIN_PHRASE_LENGTH = 1;
+	private const int _MAX_PHRASE_LENGTH = 60;
 
 	private string? _lastPhrase;
 
-	protected abstract string DefaultPhrase { get; }
-	protected string? LastPhrase 
-	{
-		get => _lastPhrase;
-		set 
-		{
-			ValidatePhrase(value);
-			_lastPhrase = value;
-		}
-	}
+	#endregion
 
-	public string Repeat() => Repeat(_lastPhrase);
+	#region Interface
+
+	public string Repeat() => Repeat(phrase: _lastPhrase);
 	public string Repeat(string? phrase) 
 	{
 		ValidatePhrase(phrase);
@@ -39,13 +33,29 @@ public abstract class RepeatingEntity : IRepeatingEntity
 			.ToString();
 	}
 
+	#endregion
+
+	#region Utils
+
+	protected abstract string DefaultPhrase { get; }
+
+	protected string? LastPhrase 
+	{
+		get => _lastPhrase;
+		set 
+		{
+			ValidatePhrase(value);
+			_lastPhrase = value;
+		}
+	}
+
+	protected abstract string CreateAppearance();
+
 	private string CreateAppearanceWithOffset(int offsetLength) 
 	{
 		var offset = CreateString(symbol: ' ', offsetLength);
 		return $"{offset}{CreateAppearance().Replace(oldValue: Environment.NewLine, newValue: $"{Environment.NewLine}{offset}")}";
 	}
-
-	protected abstract string CreateAppearance();
 
 	private static string CreateStickWithOffset(int offsetLength) 
 	{
@@ -55,11 +65,13 @@ public abstract class RepeatingEntity : IRepeatingEntity
 			.AppendLine($@"{offset} \")
 			.ToString();
 	}
+
 	private static string CreateString(char symbol, int length) 
 	{
 		return new (symbol, length);
 	}
-	private static void   ValidatePhrase(string? value) 
+
+	private static void ValidatePhrase(string? value) 
 	{
 		if(value is null) 
 		{
@@ -72,25 +84,27 @@ public abstract class RepeatingEntity : IRepeatingEntity
 					.ToString()
 			);
 		}
-		if(value.Length < _cMinPhraseLength) 
+		if(value.Length < _MIN_PHRASE_LENGTH) 
 		{
 			throw new ArgumentOutOfRangeException(
 				paramName: nameof(value),
 				message: new StringBuilder()
-					.Append($"Phrase row length can't be less than {_cMinPhraseLength}! ")
-					.Append($"Available row length is {_cMinPhraseLength}-{_cMaxPhraseLength}.")
+					.Append($"Phrase row length can't be less than {_MIN_PHRASE_LENGTH}! ")
+					.Append($"Available row length is {_MIN_PHRASE_LENGTH}-{_MAX_PHRASE_LENGTH}.")
 					.ToString()
 			);
 		}
-		if(value.Length > _cMaxPhraseLength) 
+		if(value.Length > _MAX_PHRASE_LENGTH) 
 		{
 			throw new ArgumentOutOfRangeException(
 				paramName: nameof(value),
 				message: new StringBuilder()
-					.Append($"Phrase row length can't be greater than {_cMaxPhraseLength}! ")
-					.Append($"Available row length is {_cMinPhraseLength}-{_cMaxPhraseLength}.")
+					.Append($"Phrase row length can't be greater than {_MAX_PHRASE_LENGTH}! ")
+					.Append($"Available row length is {_MIN_PHRASE_LENGTH}-{_MAX_PHRASE_LENGTH}.")
 					.ToString()
 			);
 		}
 	}
+
+	#endregion
 }

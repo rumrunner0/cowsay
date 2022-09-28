@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-
-namespace CreativeTrager.CowSay.Demo.Utils.Extensions;
+﻿namespace CreativeTrager.CowSay.Demo.Runnable;
 internal static class StringExtensions 
 {
 	internal static bool IsEmpty(this string value) 

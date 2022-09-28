@@ -1,4 +1,4 @@
-﻿namespace CreativeTrager.CowSay.Base;
+﻿namespace CreativeTrager.CowSay.Library.Related;
 public interface IRepeatingEntity 
 {
 	string Repeat();

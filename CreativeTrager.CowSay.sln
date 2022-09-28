@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreativeTrager.CowSay", "CreativeTrager.CowSay\CreativeTrager.CowSay.csproj", "{8E89431C-0F33-4109-96EA-306A5B865BFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreativeTrager.CowSay.Library", "CreativeTrager.CowSay.Library\CreativeTrager.CowSay.Library.csproj", "{8E89431C-0F33-4109-96EA-306A5B865BFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreativeTrager.CowSay.Demo", "CreativeTrager.CowSay.Demo\CreativeTrager.CowSay.Demo.csproj", "{A34B3FF9-B3C8-4BD6-A0BE-80C4CA709D7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreativeTrager.CowSay.Demo.Runnable", "CreativeTrager.CowSay.Demo.Runnable\CreativeTrager.CowSay.Demo.Runnable.csproj", "{A34B3FF9-B3C8-4BD6-A0BE-80C4CA709D7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
