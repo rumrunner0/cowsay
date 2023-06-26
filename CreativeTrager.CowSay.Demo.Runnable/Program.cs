@@ -11,26 +11,6 @@ Console.InputEncoding =
 	Console.OutputEncoding =
 		Encoding.Unicode;
 
-Log.Logger = new LoggerConfiguration()
-	.Enrich.FromLogContext()
-	.Enrich.WithMachineName()
-	.Enrich.WithProcessId().Enrich.WithProcessName()
-	.Enrich.WithThreadId().Enrich.WithThreadName()
-	.Enrich.WithEnvironmentName().Enrich.WithEnvironmentUserName()
-	.MinimumLevel.Is(LogEventLevel.Debug)
-	.WriteTo.Console(
-		theme: SystemConsoleTheme.Colored, 
-		outputTemplate:
-		"[{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} " +
-		"(machine <{MachineName}>) " +
-		"(process id:<{ProcessId}> name:<{ProcessName}>) " +
-		"(thread id:<{ThreadId}> name:<{ThreadName}>) " +
-		"(environment name:<{EnvironmentName}> username:<{EnvironmentUserName}>) " +
-		"(context <{SourceContext}>) " +
-		"{Level:u3}] {Message:lj} {Exception} " +
-		"{NewLine}")
-	.CreateLogger();
-
 Log.Information(messageTemplate: "Application has been started");
 
 var input = default(string);
