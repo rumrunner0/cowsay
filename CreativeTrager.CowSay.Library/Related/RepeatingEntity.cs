@@ -2,7 +2,7 @@
 
 
 namespace CreativeTrager.CowSay.Library.Related;
-public abstract class RepeatingEntity : IRepeatingEntity 
+public abstract class RepeatingEntity : IRepeatingEntity
 {
 	#region Data
 
@@ -15,8 +15,12 @@ public abstract class RepeatingEntity : IRepeatingEntity
 
 	#region Interface
 
-	public string Repeat() => Repeat(phrase: this._lastPhrase ?? this.DefaultPhrase);
-	public string Repeat(string? phrase) 
+	public string Speak()
+	{
+		return Repeat(phrase: this.DefaultPhrase);
+	}
+
+	public string Repeat(string phrase)
 	{
 		ValidatePhrase(phrase);
 		this._lastPhrase = phrase;
@@ -41,16 +45,16 @@ public abstract class RepeatingEntity : IRepeatingEntity
 	public RepeatingEntity(string phrase)
 		=> this.LastPhrase = phrase;
 
-	private string CreateAppearanceWithOffset(int offsetLength) 
+	private string CreateAppearanceWithOffset(int offsetLength)
 	{
 		var offset = CreateString(symbol: ' ', offsetLength);
 		return $"{offset}{CreateAppearance().Replace(oldValue: Environment.NewLine, newValue: $"{Environment.NewLine}{offset}")}";
 	}
 
-	protected string? LastPhrase 
+	protected string? LastPhrase
 	{
 		get => this._lastPhrase;
-		private init 
+		private init
 		{
 			ValidatePhrase(value);
 			this._lastPhrase = value;
@@ -61,7 +65,7 @@ public abstract class RepeatingEntity : IRepeatingEntity
 
 	protected abstract string CreateAppearance();
 
-	private static string CreateStickWithOffset(int offsetLength) 
+	private static string CreateStickWithOffset(int offsetLength)
 	{
 		var offset = CreateString(symbol: ' ', offsetLength);
 		return new StringBuilder()
@@ -70,14 +74,14 @@ public abstract class RepeatingEntity : IRepeatingEntity
 			.ToString();
 	}
 
-	private static string CreateString(char symbol, int length) 
+	private static string CreateString(char symbol, int length)
 	{
 		return new (symbol, length);
 	}
 
-	private static void ValidatePhrase(string? value) 
+	private static void ValidatePhrase(string? value)
 	{
-		if(value is null) 
+		if(value is null)
 		{
 			throw new ArgumentNullException( paramName: nameof(value), message:
 				$"Phrase {nameof(value)} can't be NULL! " +
@@ -86,7 +90,7 @@ public abstract class RepeatingEntity : IRepeatingEntity
 			);
 		}
 
-		if(value.Length < _MIN_PHRASE_LENGTH) 
+		if(value.Length < _MIN_PHRASE_LENGTH)
 		{
 			throw new ArgumentOutOfRangeException(paramName: nameof(value), message:
 				$"Phrase row length can't be less than {RepeatingEntity._MIN_PHRASE_LENGTH}! " +
@@ -94,9 +98,9 @@ public abstract class RepeatingEntity : IRepeatingEntity
 			);
 		}
 
-		if(value.Length > _MAX_PHRASE_LENGTH) 
+		if(value.Length > _MAX_PHRASE_LENGTH)
 		{
-			throw new ArgumentOutOfRangeException(paramName: nameof(value), message: 
+			throw new ArgumentOutOfRangeException(paramName: nameof(value), message:
 				$"Phrase row length can't be greater than {RepeatingEntity._MAX_PHRASE_LENGTH}! " +
 				$"Available row length is {RepeatingEntity._MIN_PHRASE_LENGTH}-{RepeatingEntity._MAX_PHRASE_LENGTH}."
 			);

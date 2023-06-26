@@ -1,6 +1,6 @@
 ﻿namespace CreativeTrager.CowSay.Library.Related;
-public interface IRepeatingEntity 
+public interface IRepeatingEntity
 {
-	string Repeat();
+	string Speak();
 	string Repeat(string phrase);
 }
