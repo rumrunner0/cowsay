@@ -1,27 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<LangVersion>10</LangVersion>
-		<ImplicitUsings>true</ImplicitUsings>
+		<TargetFramework>net7.0</TargetFramework>
+		<LangVersion>11</LangVersion>
+		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Platforms>AnyCPU</Platforms>
-		<Configurations>Release;Debug</Configurations>
+		<Platform>AnyCPU</Platform>
+		<Configurations>Debug;Release</Configurations>
 		<OutputType>Exe</OutputType>
 		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>portable</DebugType>
+		<Optimize>false</Optimize>
+		<DefineConstants>TRACE</DefineConstants>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
 		<DebugSymbols>false</DebugSymbols>
 		<DebugType>none</DebugType>
-		<DefineConstants />
 		<Optimize>true</Optimize>
-	</PropertyGroup>
-
-	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>full</DebugType>
-		<DefineConstants>TRACE</DefineConstants>
+		<DefineConstants />
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -34,6 +35,10 @@
 	  <PackageReference Include="Serilog.Enrichers.Process" Version="2.0.2" />
 	  <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
 	  <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
 
 	<ItemGroup>
 
