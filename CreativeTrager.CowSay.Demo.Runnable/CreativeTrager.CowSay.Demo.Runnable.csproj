@@ -30,6 +30,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Cocona" Version="2.2.0" />
 		<PackageReference Include="Rumble.Essentials" Version="0.0.18" />
 	</ItemGroup>
 
