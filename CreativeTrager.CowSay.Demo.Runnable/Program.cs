@@ -10,13 +10,13 @@ Console.InputEncoding = Encoding.UTF8;
 Console.OutputEncoding = Encoding.UTF8;
 
 Log.Logger = Essential.OfType<ILogger>();
-CoconaApp.Run((string phrase, int? lineLength) =>
+CoconaApp.Run((string? phrase, int? lineLength) =>
 {
 	var logger = Log.Logger.ForContext<Program>();
 	logger.Information("Application has been started");
 
 	var repeatingEntity = new RepeatingCow() as IRepeatingEntity;
-	var repeatedPhrase = repeatingEntity.Repeat(phrase);
+	var repeatedPhrase = phrase is null ? repeatingEntity.Speak() : repeatingEntity.Repeat(phrase);
 	Console.WriteLine(repeatedPhrase);
 
 	logger.Information("Application has been shut down");
