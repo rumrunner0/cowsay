@@ -1,77 +1,27 @@
-﻿using System.Text;
-using CreativeTrager.CowSay.Demo.Runnable.Utils;
+﻿using System;
+using System.Text;
+using Cocona;
 using CreativeTrager.CowSay.Library;
 using CreativeTrager.CowSay.Library.Related;
+using Rumble.Essentials;
 using Serilog;
-using Serilog.Events;
-using Serilog.Sinks.SystemConsole.Themes;
 
+Console.InputEncoding = Encoding.UTF8;
+Console.OutputEncoding = Encoding.UTF8;
 
-Console.InputEncoding =
-	Console.OutputEncoding =
-		Encoding.Unicode;
-
-Log.Information(messageTemplate: "Application has been started");
-
-var input = default(string);
-if( args.Any()) 
+Log.Logger = Essential.OfType<ILogger>();
+CoconaApp.Run((string phrase, int? lineLength) =>
 {
-	const int INVALID_INPUT_DATA_EXIT_CODE = 1;
-	if(args.Length > 1) 
-	{
-		Log.Warning(messageTemplate:
-			"Oops! It seems you've passed more than one argument to the argument list. " +
-			"If your phrase has multiple words, you may have missed quotes (\"<phrase>\"). " +
-			"Please run the program again with single argument which will be your quoted phrase"
-		);
+	var logger = Log.Logger.ForContext<Program>();
+	logger.Information("Application has been started");
 
-		Environment.Exit(exitCode: INVALID_INPUT_DATA_EXIT_CODE);
-	}
-
-	input = args.First();
-	if(input.IsEmptyOrWhitespace()) 
-	{
-		Log.Warning(messageTemplate:
-			"Oops! It seems you haven't passed the phrase to repeat as first argument or passed something wrong! " +
-			"Please run the program again with single argument which will be your quoted phrase"
-		);
-
-		Environment.Exit(exitCode: INVALID_INPUT_DATA_EXIT_CODE);
-	}
-
-} else 
-{
-	Log.Information(messageTemplate: "Hi there! Moo! I'm the ASCII Cow. Enter the phrase you wanna me to repeat. Moo!");
-
-	while(true) 
-	{
-		Log.Information(messageTemplate: "Your phrase: ");
-		input = Console.ReadLine();
-		Log.Information(messageTemplate: "You entered phrase \"{EnteredPhrase}\" using console interface", input);
-
-		if(input is null || input.IsEmptyOrWhitespace()) 
-		{
-			Log.Warning(messageTemplate:
-				"Oops! It seems you've entered something wrong! " +
-				"{ParameterName} can't be null or empty or whitespace. " + 
-				"Please enter the phrase again",
-				propertyValue: nameof(input)
-			);
-
-			continue;
-		}
-
-		break;
-	}
-
-}
-
-{
 	var repeatingEntity = new RepeatingCow() as IRepeatingEntity;
-	var repeatedInput = repeatingEntity.Repeat(phrase: input);
-	Log.Information(messageTemplate: "{NewLine}{RepeatedInput}", Environment.NewLine, repeatedInput);
-}
+	var repeatedPhrase = repeatingEntity.Repeat(phrase);
+	Console.WriteLine(repeatedPhrase);
 
-Log.Information(messageTemplate: "Application has been stopped");
-Log.Information(messageTemplate: "Press <Enter> to exit...");
-Console.ReadLine();
+	logger.Information("Application has been shut down");
+	logger.Information("");
+});
+
+Log.CloseAndFlush();
+Environment.Exit(EnvironmentExitCode.Success);
