@@ -7,6 +7,9 @@ namespace Rumble.Cowsay.Tool.Runnable;
 /// </summary>
 internal static class EchoingEntities
 {
+	/// <summary>
+	/// Cow echo entity.
+	/// </summary>
 	internal static EchoEntity Cow => new ()
 	{
 		DefaultPhrase = "Moo!",
@@ -20,6 +23,9 @@ internal static class EchoingEntities
 		)
 	};
 
+	/// <summary>
+	/// Elephant echo entity.
+	/// </summary>
 	internal static EchoEntity Elephant => new ()
 	{
 		DefaultPhrase = "Pawoo!",
