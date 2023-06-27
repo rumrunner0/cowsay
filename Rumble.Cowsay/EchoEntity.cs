@@ -76,9 +76,9 @@ public sealed class EchoEntity : IEchoEntity
 		var phraseLength = phrase.Length;
 		return
 		(
-			$@"{Symbol.LightTopLeftCorner}{new (Symbol.LightHorizontalLine, phraseLength+2)}{Symbol.LightTopRightCorner}" + Environment.NewLine +
-			$@"{Symbol.LightVerticalLine} {phrase} {Symbol.LightVerticalLine}" + Environment.NewLine +
-			$@"{Symbol.LightBottomLeftCorner}{new (Symbol.LightHorizontalLine, phraseLength+2)}{Symbol.LightBottomRightCorner}" + Environment.NewLine +
+			$@"{Symbol.DoubledTopLeftCorner}{new (Symbol.DashMinusHorizontalLine, phraseLength+2)}{Symbol.DoubledTopRightCorner}" + Environment.NewLine +
+			$@"{Symbol.DoubledVerticalLine} {phrase} {Symbol.DoubledVerticalLine}" + Environment.NewLine +
+			$@"{Symbol.DoubledBottomLeftCorner}{new (Symbol.DashMinusHorizontalLine, phraseLength+2)}{Symbol.DoubledBottomRightCorner}" + Environment.NewLine +
 			StickWithOffset(phraseLength + 4) + Environment.NewLine +
 			AppearanceWithOffset(phraseLength + 7)
 		);

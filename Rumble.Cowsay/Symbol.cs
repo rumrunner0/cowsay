@@ -11,32 +11,32 @@ public static class Symbol
 	public static char Space => ' ';
 
 	/// <summary>
-	/// Light horizontal line symbol.
+	/// Horizontal line symbol.
 	/// </summary>
-	public static char LightHorizontalLine => '-';
+	public static char DashMinusHorizontalLine => '-';
 
 	/// <summary>
-	/// Light vertical line symbol.
+	/// Vertical line symbol.
 	/// </summary>
-	public static char LightVerticalLine => '║';
+	public static char DoubledVerticalLine => '║';
 
 	/// <summary>
-	/// Light top-left corner symbol.
+	/// Top-left corner symbol.
 	/// </summary>
-	public static char LightTopLeftCorner => '╓';
+	public static char DoubledTopLeftCorner => '╓';
 
 	/// <summary>
-	/// Light bottom-left corner symbol.
+	/// Bottom-left corner symbol.
 	/// </summary>
-	public static char LightBottomLeftCorner => '╙';
+	public static char DoubledBottomLeftCorner => '╙';
 
 	/// <summary>
-	/// Light top-right corner symbol.
+	/// Top-right corner symbol.
 	/// </summary>
-	public static char LightTopRightCorner => '╖';
+	public static char DoubledTopRightCorner => '╖';
 
 	/// <summary>
-	/// Light bottom-right corner symbol.
+	/// Bottom-right corner symbol.
 	/// </summary>
-	public static char LightBottomRightCorner => '╜';
+	public static char DoubledBottomRightCorner => '╜';
 }
