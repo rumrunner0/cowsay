@@ -4,7 +4,7 @@ ASCII-entities that can repeat phrases.
 This repository contains the `Rumble.Cowsay` C# library and `Rumble.Cowsay.Tool` dotnet tool. The code in this repository is an original work created as a personal project, and serves as a .NET C# adaptation of the original cowsay program.
 
 [![NuGet Package: Rumble.Cowsay](https://img.shields.io/nuget/vpre/Rumble.Cowsay?label=nuget%3A%20Rumble.Cowsay)](https://www.nuget.org/packages/Rumble.Cowsay)
-[![NuGet Package: Rumble.Cowsay.Tool](https://img.shields.io/nuget/vpre/Rumble.Cowsay.Tool?label=nuget%3A%20Rumble.Cowsay)](https://www.nuget.org/packages/Rumble.Cowsay.Tool)
+[![NuGet Package: Rumble.Cowsay.Tool](https://img.shields.io/nuget/vpre/Rumble.Cowsay.Tool?label=nuget%3A%20Rumble.Cowsay.Tool)](https://www.nuget.org/packages/Rumble.Cowsay.Tool)
 
 ## Description
 
