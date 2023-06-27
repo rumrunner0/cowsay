@@ -27,7 +27,7 @@ Console.WriteLine(entity.Echo("Hello, world!"));
 To install the tool globally, use the following command:
 
 ```shell
-dotnet tool install --global Rumble.Cowsay.Tool
+$ dotnet tool install --global Rumble.Cowsay.Tool
 ```
 
 Then, you can use the tool with the following commands:
