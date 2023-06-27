@@ -1,4 +1,5 @@
 ﻿using System;
+using Humanizer;
 
 namespace Rumble.Cowsay;
 
@@ -18,6 +19,11 @@ public sealed class EchoEntity : IEchoEntity
 	private static readonly int _maxLineLength = 60;
 
 	/// <summary>
+	/// Name of the entity.
+	/// </summary>
+	private readonly string _name;
+
+	/// <summary>
 	/// Phrase that represents an entity.
 	/// </summary>
 	private readonly string _defaultPhrase;
@@ -32,8 +38,18 @@ public sealed class EchoEntity : IEchoEntity
 	/// </summary>
 	public EchoEntity()
 	{
+		this._name = string.Empty;
 		this._defaultPhrase = string.Empty;
 		this._appearance = string.Empty;
+	}
+
+	///
+	/// <inheritdoc cref="_name" />
+	///
+	public required string Name
+	{
+		get => this._name;
+		init => this._name = value.Kebaberize();
 	}
 
 	///
@@ -76,9 +92,9 @@ public sealed class EchoEntity : IEchoEntity
 		var phraseLength = phrase.Length;
 		return
 		(
-			$@"{Symbol.DoubledTopLeftCorner}{new (Symbol.DashMinusHorizontalLine, phraseLength+2)}{Symbol.DoubledTopRightCorner}" + Environment.NewLine +
-			$@"{Symbol.DoubledVerticalLine} {phrase} {Symbol.DoubledVerticalLine}" + Environment.NewLine +
-			$@"{Symbol.DoubledBottomLeftCorner}{new (Symbol.DashMinusHorizontalLine, phraseLength+2)}{Symbol.DoubledBottomRightCorner}" + Environment.NewLine +
+			$@"{Symbol.TopLeftCorner}{new (Symbol.HorizontalLine, phraseLength+2)}{Symbol.TopRightCorner}" + Environment.NewLine +
+			$@"{Symbol.VerticalLine} {phrase} {Symbol.VerticalLine}" + Environment.NewLine +
+			$@"{Symbol.BottomLeftCorner}{new (Symbol.HorizontalLine, phraseLength+2)}{Symbol.BottomRightCorner}" + Environment.NewLine +
 			StickWithOffset(phraseLength + 4) + Environment.NewLine +
 			AppearanceWithOffset(phraseLength + 7)
 		);
