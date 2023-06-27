@@ -14,8 +14,8 @@ CoconaApp.Run((string? phrase, int? lineLength) =>
 	var logger = Log.Logger.ForContext<Program>();
 	logger.Information("Application has been started");
 
-	var repeatingEntity = new RepeatingCow() as IRepeatingEntity;
-	var repeatedPhrase = repeatingEntity.Speak(phrase ?? string.Empty, lineLength ?? 0);
+	var repeatingEntity = new EchoCow() as IEchoEntity;
+	var repeatedPhrase = repeatingEntity.Echo(phrase ?? string.Empty, lineLength ?? 0);
 	Console.WriteLine(repeatedPhrase);
 
 	logger.Information("Application has been shut down");

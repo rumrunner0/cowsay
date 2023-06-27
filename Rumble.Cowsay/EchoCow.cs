@@ -2,10 +2,10 @@
 
 namespace Rumble.Cowsay;
 
-public sealed class RepeatingCow : RepeatingEntity
+public sealed class EchoCow : EchoEntity
 {
-	public RepeatingCow() : base() { }
-	public RepeatingCow(string phrase) : base(phrase) { }
+	public EchoCow() : base() { }
+	public EchoCow(string phrase) : base(phrase) { }
 
 	protected override string DefaultPhrase => "Moo!";
 	protected override string Appearance =>
