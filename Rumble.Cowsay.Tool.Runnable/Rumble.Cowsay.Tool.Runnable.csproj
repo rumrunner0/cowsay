@@ -8,12 +8,17 @@
 		<Platform>AnyCPU</Platform>
 		<Configurations>Debug;Release</Configurations>
 		<OutputType>Exe</OutputType>
-		<IsPackable>true</IsPackable>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<PackageId>Rumble.Cowsay.Tool</PackageId>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>cowsay</ToolCommandName>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<IsPackable>true</IsPackable>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageId>Rumble.Cowsay.Tool</PackageId>
 		<Version>0.0.1</Version>
 		<AssemblyVersion>0.0.1</AssemblyVersion>
 		<FileVersion>1</FileVersion>
