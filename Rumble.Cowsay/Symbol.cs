@@ -11,12 +11,32 @@ public static class Symbol
 	public static char Space => ' ';
 
 	/// <summary>
-	/// Underscore symbol.
+	/// Light horizontal line symbol.
 	/// </summary>
-	public static char Underscore => '_';
+	public static char LightHorizontalLine => '-';
 
 	/// <summary>
-	/// Underscore symbol.
+	/// Light vertical line symbol.
 	/// </summary>
-	public new static char Equals => '=';
+	public static char LightVerticalLine => '║';
+
+	/// <summary>
+	/// Light top-left corner symbol.
+	/// </summary>
+	public static char LightTopLeftCorner => '╓';
+
+	/// <summary>
+	/// Light bottom-left corner symbol.
+	/// </summary>
+	public static char LightBottomLeftCorner => '╙';
+
+	/// <summary>
+	/// Light top-right corner symbol.
+	/// </summary>
+	public static char LightTopRightCorner => '╖';
+
+	/// <summary>
+	/// Light bottom-right corner symbol.
+	/// </summary>
+	public static char LightBottomRightCorner => '╜';
 }
