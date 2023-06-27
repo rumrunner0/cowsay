@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using Cocona;
-using Rumble.Cowsay;
+using Rumble.Cowsay.Tool.Runnable;
 using Rumble.Essentials;
 using Serilog;
 
@@ -14,9 +14,16 @@ CoconaApp.Run((string? phrase, int? lineLength) =>
 	var logger = Log.Logger.ForContext<Program>();
 	logger.Information("Application has been started");
 
-	var repeatingEntity = new EchoCow() as IEchoEntity;
-	var repeatedPhrase = repeatingEntity.Echo(phrase ?? string.Empty, lineLength ?? 0);
-	Console.WriteLine(repeatedPhrase);
+	var repeatingEntity = EchoingEntities.Cow;
+	Console.WriteLine
+	(
+		(phrase, lineLength) switch
+		{
+			{ phrase: not null, lineLength: not null } => repeatingEntity.Echo(phrase, lineLength.Value),
+			{ phrase: not null } => repeatingEntity.Echo(phrase),
+			_ => repeatingEntity.Speak()
+		}
+	);
 
 	logger.Information("Application has been shut down");
 	logger.Information("");
