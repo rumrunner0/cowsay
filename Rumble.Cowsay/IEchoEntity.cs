@@ -6,7 +6,7 @@ namespace Rumble.Cowsay;
 /// <summary>
 /// Entity that echoes phrases.
 /// </summary>
-public interface IEchoEntity
+internal interface IEchoEntity
 {
 	/// <summary>
 	/// Speaks a phrase.

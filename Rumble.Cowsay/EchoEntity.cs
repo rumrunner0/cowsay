@@ -1,101 +1,111 @@
 ﻿using System;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace Rumble.Cowsay;
 
-public abstract class EchoEntity : IEchoEntity
+///
+/// <inheritdoc />
+///
+public sealed class EchoEntity : IEchoEntity
 {
-	private const int _minPhraseLength = 1;
-	private const int _maxPhraseLength = 60;
+	/// <summary>
+	/// Min length of line.
+	/// </summary>
+	private static readonly int _minLineLength = 1;
 
-	private string? _lastPhrase = null;
+	/// <summary>
+	/// Max length of line.
+	/// </summary>
+	private static readonly int _maxLineLength = 60;
 
-	public string Echo(string phrase, int maxLineLength)
+	/// <summary>
+	/// Phrase that represents an entity.
+	/// </summary>
+	private readonly string _defaultPhrase;
+
+	/// <summary>
+	/// ASCII art of an entity.
+	/// </summary>
+	private readonly string _appearance;
+
+	/// <summary>
+	/// Constructor of the instance.
+	/// </summary>
+	public EchoEntity()
 	{
-		ValidatePhrase(phrase);
-		this._lastPhrase = phrase;
-
-		var phraseLength = phrase!.Length;
-		return new StringBuilder()
-			.AppendLine($@"  {CreateString(symbol: '_', phraseLength)}  ")
-			.AppendLine($@"< {phrase} >")
-			.AppendLine($@"  {CreateString(symbol: '=', phraseLength)}  ")
-
-			.Append(CreateStickWithOffset(offsetLength: phraseLength+4))
-			.Append(CreateAppearanceWithOffset(offsetLength: phraseLength+7))
-
-			.ToString();
+		// Empty
 	}
 
-	public EchoEntity() { }
-	public EchoEntity(string phrase)
-		=> this.LastPhrase = phrase;
-
-	private string CreateAppearanceWithOffset(int offsetLength)
+	///
+	/// <inheritdoc cref="_defaultPhrase" />
+	///
+	public required string DefaultPhrase
 	{
-		var offset = CreateString(symbol: ' ', offsetLength);
-		return $"{offset}{Appearance.Replace(oldValue: Environment.NewLine, newValue: $"{Environment.NewLine}{offset}")}";
+		init => this._defaultPhrase = value;
 	}
 
-	protected string? LastPhrase
+	///
+	/// <inheritdoc cref="_appearance" />
+	///
+	public required string Appearance
 	{
-		get => this._lastPhrase;
-		private init
-		{
-			ValidatePhrase(value);
-			this._lastPhrase = value;
-		}
+		init => this._appearance = value;
 	}
 
-	protected abstract string DefaultPhrase { get; }
-
-	protected abstract string Appearance { get; }
-
-	private static string CreateStickWithOffset(int offsetLength)
+	///
+	/// <inheritdoc />
+	///
+	public Task<string> Speak()
 	{
-		var offset = CreateString(symbol: ' ', offsetLength);
-		return new StringBuilder()
-			.AppendLine($@"{offset}\")
-			.AppendLine($@"{offset} \")
-			.ToString();
+		return Echo(phrase: _defaultPhrase);
 	}
 
-	private static string CreateString(char symbol, int length)
+	///
+	/// <inheritdoc />
+	///
+	public Task<string> Echo(string phrase)
 	{
-		return new (symbol, length);
+		return Echo(phrase, EchoEntity._maxLineLength);
 	}
 
-	private static void ValidatePhrase(string? value)
+	///
+	/// <inheritdoc />
+	///
+	public Task<string> Echo(string phrase, int maxLineLength)
 	{
-		if(value is null)
-		{
-			throw new ArgumentNullException
-			(
-				paramName: nameof(value),
-				message: $"Phrase {nameof(value)} can't be NULL! " +
-				$"Maybe you should override the {nameof(EchoEntity.DefaultPhrase)} " +
-				$"property and set the specific value to be returned."
-			);
-		}
+		var phraseLength = phrase.Length;
+		return Task.FromResult
+		(
+			$@"  {new string(Symbol.Underscore, phraseLength)}  " + Environment.NewLine +
+			$@"< {phrase} >" + Environment.NewLine +
+			$@"  {new string(Symbol.Equals, phraseLength)}  " + Environment.NewLine +
+			StickWithOffset(offsetLength: phraseLength + 4) +
+			AppearanceWithOffset(offsetLength: phraseLength + 7)
+		);
+	}
 
-		if(value.Length < _minPhraseLength)
-		{
-			throw new ArgumentOutOfRangeException
-			(
-				paramName: nameof(value),
-				message: $"Phrase row length can't be less than {EchoEntity._minPhraseLength}! " +
-				$"Available row length is {EchoEntity._minPhraseLength}-{EchoEntity._maxPhraseLength}."
-			);
-		}
+	/// <summary>
+	/// Stick part of the ASCII art.
+	/// </summary>
+	/// <param name="offsetLength">Length of the offset by which the stick is shifted</param>
+	private static string StickWithOffset(int offsetLength)
+	{
+		var offset = new string(Symbol.Space, offsetLength);
+		return
+		(
+			$@"{offset}\" + Environment.NewLine +
+			$@"{offset} \"
+		);
+	}
 
-		if(value.Length > _maxPhraseLength)
-		{
-			throw new ArgumentOutOfRangeException
-			(
-				paramName: nameof(value),
-				message: $"Phrase row length can't be greater than {EchoEntity._maxPhraseLength}! " +
-				$"Available row length is {EchoEntity._minPhraseLength}-{EchoEntity._maxPhraseLength}."
-			);
-		}
+	/// <summary>
+	/// <see cref="_appearance"/> with added offset.
+	/// </summary>
+	/// <param name="offsetLength">Length of the offset by which the <see cref="_appearance"/> is shifted</param>
+	/// <returns></returns>
+	private string AppearanceWithOffset(int offsetLength)
+	{
+		var offset = new string(Symbol.Space, offsetLength);
+		return $@"{offset}{_appearance.Replace(oldValue: Environment.NewLine, newValue: $"{Environment.NewLine}{offset}")}";
 	}
 }
