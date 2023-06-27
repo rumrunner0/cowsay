@@ -12,7 +12,7 @@ internal interface IEchoEntity
 	/// Speaks a phrase.
 	/// </summary>
 	/// <returns>Formatted string that represents the entity speaking the phrase</returns>
-	Task<string> Speak();
+	string Speak();
 
 	/// <summary>
 	/// Echoes a phrase.
@@ -20,7 +20,7 @@ internal interface IEchoEntity
 	/// <param name="phrase">The phrase to be echoed by the entity</param>
 	/// <returns>Formatted string that represents the entity echoing the phrase</returns>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="phrase"/> is null</exception>
-	Task<string> Echo(string phrase);
+	string Echo(string phrase);
 
 	/// <summary>
 	/// Echoes a phrase.
@@ -30,5 +30,5 @@ internal interface IEchoEntity
 	/// <returns>Formatted string that represents the entity echoing the phrase</returns>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="phrase"/> is null</exception>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxLineLength"/> is out of allowed range</exception>
-	Task<string> Echo(string phrase, int maxLineLength);
+	string Echo(string phrase, int maxLineLength);
 }

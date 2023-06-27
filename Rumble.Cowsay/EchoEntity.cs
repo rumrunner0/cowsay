@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 
 namespace Rumble.Cowsay;
 
@@ -9,12 +8,12 @@ namespace Rumble.Cowsay;
 public sealed class EchoEntity : IEchoEntity
 {
 	/// <summary>
-	/// Min length of line.
+	/// Min length of the phrase line.
 	/// </summary>
 	private static readonly int _minLineLength = 1;
 
 	/// <summary>
-	/// Max length of line.
+	/// Max length of the phrase line.
 	/// </summary>
 	private static readonly int _maxLineLength = 60;
 
@@ -33,7 +32,8 @@ public sealed class EchoEntity : IEchoEntity
 	/// </summary>
 	public EchoEntity()
 	{
-		// Empty
+		this._defaultPhrase = string.Empty;
+		this._appearance = string.Empty;
 	}
 
 	///
@@ -55,7 +55,7 @@ public sealed class EchoEntity : IEchoEntity
 	///
 	/// <inheritdoc />
 	///
-	public Task<string> Speak()
+	public string Speak()
 	{
 		return Echo(phrase: _defaultPhrase);
 	}
@@ -63,7 +63,7 @@ public sealed class EchoEntity : IEchoEntity
 	///
 	/// <inheritdoc />
 	///
-	public Task<string> Echo(string phrase)
+	public string Echo(string phrase)
 	{
 		return Echo(phrase, EchoEntity._maxLineLength);
 	}
@@ -71,10 +71,10 @@ public sealed class EchoEntity : IEchoEntity
 	///
 	/// <inheritdoc />
 	///
-	public Task<string> Echo(string phrase, int maxLineLength)
+	public string Echo(string phrase, int maxLineLength)
 	{
 		var phraseLength = phrase.Length;
-		return Task.FromResult
+		return
 		(
 			$@"  {new string(Symbol.Underscore, phraseLength)}  " + Environment.NewLine +
 			$@"< {phrase} >" + Environment.NewLine +
