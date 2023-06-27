@@ -15,30 +15,30 @@ public static class Symbol
 	/// <summary>
 	/// Horizontal line symbol.
 	/// </summary>
-	public static char DashMinusHorizontalLine => '-';
+	public static char HorizontalLine => '┄';
 
 	/// <summary>
 	/// Vertical line symbol.
 	/// </summary>
-	public static char DoubledVerticalLine => '║';
+	public static char VerticalLine => '║';
 
 	/// <summary>
 	/// Top-left corner symbol.
 	/// </summary>
-	public static char DoubledTopLeftCorner => '╓';
+	public static char TopLeftCorner => '╓';
 
 	/// <summary>
 	/// Bottom-left corner symbol.
 	/// </summary>
-	public static char DoubledBottomLeftCorner => '╙';
+	public static char BottomLeftCorner => '╙';
 
 	/// <summary>
 	/// Top-right corner symbol.
 	/// </summary>
-	public static char DoubledTopRightCorner => '╖';
+	public static char TopRightCorner => '╖';
 
 	/// <summary>
 	/// Bottom-right corner symbol.
 	/// </summary>
-	public static char DoubledBottomRightCorner => '╜';
+	public static char BottomRightCorner => '╜';
 }
