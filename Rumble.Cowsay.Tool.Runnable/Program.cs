@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using Cocona;
 using Humanizer;
-using Rumble.Cowsay.Tool.Runnable;
+using Rumble.Cowsay;
 using Rumble.Essentials;
 // using Serilog;
 
@@ -20,8 +20,8 @@ CoconaApp.Run((string? entityName, string? phrase, int? lineLength) =>
 
 	var existingEntities = new []
 	{
-		EchoingEntities.Cow,
-		EchoingEntities.Elephant
+		EchoingEntity.Cow,
+		EchoingEntity.Elephant
 	};
 
 	var entity =

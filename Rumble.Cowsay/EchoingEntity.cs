@@ -1,16 +1,16 @@
 ﻿using System;
 
-namespace Rumble.Cowsay.Tool.Runnable;
+namespace Rumble.Cowsay;
 
 /// <summary>
 /// Predefined echoing entities.
 /// </summary>
-internal static class EchoingEntities
+public static class EchoingEntity
 {
 	/// <summary>
 	/// Cow echo entity.
 	/// </summary>
-	internal static EchoEntity Cow => new ()
+	public static EchoEntity Cow => new ()
 	{
 		Name = nameof(Cow),
 		DefaultPhrase = "Moo!",
@@ -27,7 +27,7 @@ internal static class EchoingEntities
 	/// <summary>
 	/// Elephant echo entity.
 	/// </summary>
-	internal static EchoEntity Elephant => new ()
+	public static EchoEntity Elephant => new ()
 	{
 		Name = nameof(Elephant),
 		DefaultPhrase = "Pawoo!",
