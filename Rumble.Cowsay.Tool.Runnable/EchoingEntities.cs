@@ -12,6 +12,7 @@ internal static class EchoingEntities
 	/// </summary>
 	internal static EchoEntity Cow => new ()
 	{
+		Name = nameof(Cow),
 		DefaultPhrase = "Moo!",
 		Appearance =
 		(
@@ -28,12 +29,13 @@ internal static class EchoingEntities
 	/// </summary>
 	internal static EchoEntity Elephant => new ()
 	{
+		Name = nameof(Elephant),
 		DefaultPhrase = "Pawoo!",
 		Appearance =
 		(
 			"""  __     __"""           + Environment.NewLine +
 			""" /  \~~~/  \"""          + Environment.NewLine +
-			"""(    ..     )----."""    + Environment.NewLine +
+			"""(    . .    )----."""    + Environment.NewLine +
 			""" \__     __/      \"""   + Environment.NewLine +
 			"""   )|  /)         |\"""  + Environment.NewLine +
 			"""    | /\  /___\   / ^""" + Environment.NewLine +
