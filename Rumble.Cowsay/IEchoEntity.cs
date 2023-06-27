@@ -9,6 +9,20 @@ namespace Rumble.Cowsay;
 public interface IEchoEntity
 {
 	/// <summary>
+	/// Speaks a phrase.
+	/// </summary>
+	/// <returns>Formatted string that represents the entity speaking the phrase</returns>
+	Task<string> Speak();
+
+	/// <summary>
+	/// Echoes a phrase.
+	/// </summary>
+	/// <param name="phrase">The phrase to be echoed by the entity</param>
+	/// <returns>Formatted string that represents the entity echoing the phrase</returns>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="phrase"/> is null</exception>
+	Task<string> Echo(string phrase);
+
+	/// <summary>
 	/// Echoes a phrase.
 	/// </summary>
 	/// <param name="phrase">The phrase to be echoed by the entity</param>
