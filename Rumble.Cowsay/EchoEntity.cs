@@ -79,8 +79,8 @@ public sealed class EchoEntity : IEchoEntity
 			$@"  {new string(Symbol.Underscore, phraseLength)}  " + Environment.NewLine +
 			$@"< {phrase} >" + Environment.NewLine +
 			$@"  {new string(Symbol.Equals, phraseLength)}  " + Environment.NewLine +
-			StickWithOffset(offsetLength: phraseLength + 4) +
-			AppearanceWithOffset(offsetLength: phraseLength + 7)
+			StickWithOffset(phraseLength + 4) + Environment.NewLine +
+			AppearanceWithOffset(phraseLength + 7)
 		);
 	}
 
