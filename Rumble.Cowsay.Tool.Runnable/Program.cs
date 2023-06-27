@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Text;
 using Cocona;
-using CreativeTrager.CowSay.Library;
-using CreativeTrager.CowSay.Library.Related;
+using Rumble.Cowsay;
 using Rumble.Essentials;
 using Serilog;
 
@@ -16,7 +15,7 @@ CoconaApp.Run((string? phrase, int? lineLength) =>
 	logger.Information("Application has been started");
 
 	var repeatingEntity = new RepeatingCow() as IRepeatingEntity;
-	var repeatedPhrase = phrase is null ? repeatingEntity.Speak() : repeatingEntity.Repeat(phrase);
+	var repeatedPhrase = repeatingEntity.Speak(phrase ?? string.Empty, lineLength ?? 0);
 	Console.WriteLine(repeatedPhrase);
 
 	logger.Information("Application has been shut down");

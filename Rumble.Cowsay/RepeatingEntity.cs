@@ -1,26 +1,16 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
+namespace Rumble.Cowsay;
 
-namespace CreativeTrager.CowSay.Library.Related;
 public abstract class RepeatingEntity : IRepeatingEntity
 {
-	#region Data
-
-	private const int _MIN_PHRASE_LENGTH = 1;
-	private const int _MAX_PHRASE_LENGTH = 60;
+	private const int _minPhraseLength = 1;
+	private const int _maxPhraseLength = 60;
 
 	private string? _lastPhrase = null;
 
-	#endregion
-
-	#region Interface
-
-	public string Speak()
-	{
-		return Repeat(phrase: this.DefaultPhrase);
-	}
-
-	public string Repeat(string phrase)
+	public string Speak(string phrase, int lineLength)
 	{
 		ValidatePhrase(phrase);
 		this._lastPhrase = phrase;
@@ -37,10 +27,6 @@ public abstract class RepeatingEntity : IRepeatingEntity
 			.ToString();
 	}
 
-	#endregion
-
-	#region Utils
-
 	public RepeatingEntity() { }
 	public RepeatingEntity(string phrase)
 		=> this.LastPhrase = phrase;
@@ -48,7 +34,7 @@ public abstract class RepeatingEntity : IRepeatingEntity
 	private string CreateAppearanceWithOffset(int offsetLength)
 	{
 		var offset = CreateString(symbol: ' ', offsetLength);
-		return $"{offset}{CreateAppearance().Replace(oldValue: Environment.NewLine, newValue: $"{Environment.NewLine}{offset}")}";
+		return $"{offset}{Appearance.Replace(oldValue: Environment.NewLine, newValue: $"{Environment.NewLine}{offset}")}";
 	}
 
 	protected string? LastPhrase
@@ -63,7 +49,7 @@ public abstract class RepeatingEntity : IRepeatingEntity
 
 	protected abstract string DefaultPhrase { get; }
 
-	protected abstract string CreateAppearance();
+	protected abstract string Appearance { get; }
 
 	private static string CreateStickWithOffset(int offsetLength)
 	{
@@ -90,22 +76,20 @@ public abstract class RepeatingEntity : IRepeatingEntity
 			);
 		}
 
-		if(value.Length < _MIN_PHRASE_LENGTH)
+		if(value.Length < _minPhraseLength)
 		{
 			throw new ArgumentOutOfRangeException(paramName: nameof(value), message:
-				$"Phrase row length can't be less than {RepeatingEntity._MIN_PHRASE_LENGTH}! " +
-				$"Available row length is {RepeatingEntity._MIN_PHRASE_LENGTH}-{RepeatingEntity._MAX_PHRASE_LENGTH}."
+				$"Phrase row length can't be less than {RepeatingEntity._minPhraseLength}! " +
+				$"Available row length is {RepeatingEntity._minPhraseLength}-{RepeatingEntity._maxPhraseLength}."
 			);
 		}
 
-		if(value.Length > _MAX_PHRASE_LENGTH)
+		if(value.Length > _maxPhraseLength)
 		{
 			throw new ArgumentOutOfRangeException(paramName: nameof(value), message:
-				$"Phrase row length can't be greater than {RepeatingEntity._MAX_PHRASE_LENGTH}! " +
-				$"Available row length is {RepeatingEntity._MIN_PHRASE_LENGTH}-{RepeatingEntity._MAX_PHRASE_LENGTH}."
+				$"Phrase row length can't be greater than {RepeatingEntity._maxPhraseLength}! " +
+				$"Available row length is {RepeatingEntity._minPhraseLength}-{RepeatingEntity._maxPhraseLength}."
 			);
 		}
 	}
-
-	#endregion
 }
