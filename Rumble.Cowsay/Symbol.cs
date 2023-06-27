@@ -2,6 +2,8 @@
 
 /// <summary>
 /// Predefined symbols.
+/// For more variants, please take a look at the following link.
+/// https://en.wikipedia.org/wiki/Box-drawing_character
 /// </summary>
 public static class Symbol
 {
