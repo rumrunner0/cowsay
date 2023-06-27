@@ -8,7 +8,24 @@
 		<Platform>AnyCPU</Platform>
 		<Configurations>Debug;Release</Configurations>
 		<OutputType>Exe</OutputType>
-		<IsPackable>false</IsPackable>
+		<IsPackable>true</IsPackable>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageId>Rumble.Cowsay.Tool</PackageId>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Version>0.0.1</Version>
+		<AssemblyVersion>0.0.1</AssemblyVersion>
+		<FileVersion>1</FileVersion>
+		<Title>Cowsay</Title>
+		<Authors>Roman Malyi</Authors>
+		<Copyright>Copyright (c) Roman Malyi 2023.</Copyright>
+		<RepositoryUrl>https://github.com/rumrunner0/cowsay</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -37,6 +54,11 @@
 	<PropertyGroup>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+		<None Include="..\LICENSE" Pack="true" PackagePath="\" />
+	</ItemGroup>
 
 	<ItemGroup>
 
