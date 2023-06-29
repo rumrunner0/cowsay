@@ -1,7 +1,7 @@
 # cowsay
 ASCII-entities that can repeat phrases.
 
-This repository contains the `Rumble.Cowsay` class library and `Rumble.Cowsay.Tool` CLI tool. The code in the repository is an original work created as a personal project, and serves as a .NET C# adaptation of the original cowsay program.
+This repository contains the `Rumble.Cowsay` class library and `Rumble.Cowsay.Tool` CLI tool. The project and the in the repository is an original work created as a personal project, and serves as a .NET C# adaptation of the original cowsay program.
 
 [![NuGet Package: Rumble.Cowsay](https://img.shields.io/nuget/vpre/Rumble.Cowsay?label=nuget%3A%20Rumble.Cowsay)](https://www.nuget.org/packages/Rumble.Cowsay)
 [![NuGet Package: Rumble.Cowsay.Tool](https://img.shields.io/nuget/vpre/Rumble.Cowsay.Tool?label=nuget%3A%20Rumble.Cowsay.Tool)](https://www.nuget.org/packages/Rumble.Cowsay.Tool)
@@ -15,6 +15,7 @@ Cowsay is a fun and configurable speaking cow (not only) program. Originally dev
 ### Rumble.Cowsay Library
 
 ```csharp
+using System;
 using Rumble.Cowsay;
 
 var entity = EchoingEntity.Cow;
