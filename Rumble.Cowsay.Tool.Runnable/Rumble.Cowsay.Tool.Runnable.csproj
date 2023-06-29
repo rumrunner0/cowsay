@@ -11,11 +11,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<PackAsTool>true</PackAsTool>
-		<ToolCommandName>cowsay</ToolCommandName>
-	</PropertyGroup>
-
-	<PropertyGroup>
 		<IsPackable>true</IsPackable>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>Rumble.Cowsay.Tool</PackageId>
@@ -31,6 +26,11 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>cowsay</ToolCommandName>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -53,7 +53,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Cocona" Version="2.2.0" />
-		<PackageReference Include="Rumble.Essentials" Version="0.0.18" />
+		<PackageReference Include="Rumble.Essentials" Version="0.0.19" />
 	</ItemGroup>
 
 	<PropertyGroup>
