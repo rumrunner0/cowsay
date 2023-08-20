@@ -7,7 +7,6 @@ This repository contains the `Rumble.Cowsay` class library and `Rumble.Cowsay.To
 [![NuGet Package: Rumble.Cowsay.Tool](https://img.shields.io/nuget/vpre/Rumble.Cowsay.Tool?label=nuget%3A%20Rumble.Cowsay.Tool)](https://www.nuget.org/packages/Rumble.Cowsay.Tool)
 
 ## Description
-
 Cowsay is a fun and configurable speaking cow (not only) program. Originally developed for GNU/Linux, this C# adaptation brings the fun of the original cowsay to the .NET ecosystem.
 
 ## Usage
@@ -26,13 +25,11 @@ Console.WriteLine(entity.Echo("Hello, world!"));
 ### Rumble.Cowsay.Tool
 
 To install the tool globally, use the following command:
-
 ```shell
 $ dotnet tool install --global Rumble.Cowsay.Tool
 ```
 
 Then, you can use the tool with the following commands:
-
 ```shell
 # with default entity (cow)
 $ cowsay
@@ -57,10 +54,11 @@ $ cowsay -h
 $ cowsay --help
 ```
 
-## History
+## Contributing
+If you have any suggestions, ideas, or feedback to enhance the project, please feel free to create an issue. Your collaboration is welcomed to make this project a bit better.
 
+## History
 The original cowsay program, written in Perl, was created by Tony Monroe, with suggestions from Shannon Appel and contributions from Anthony Polito, as a whimsical program for GNU/Linux systems. It served as a creative output mechanism, generating ASCII art of a cow uttering the input text.
 
 ## Note
-
-This project is made out of pure love for .NET C#. It serves as a pet-project written just-for-fun. All the code here is 100% original.
+This project is made out of pure love for .NET C#. All the code here is 100% original.
