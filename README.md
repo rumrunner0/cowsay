@@ -54,11 +54,11 @@ $ cowsay -h
 $ cowsay --help
 ```
 
-## Contributing
-If you have any suggestions, ideas, or feedback to enhance the project, please feel free to create an issue. Your collaboration is welcomed to make this project a bit better.
-
 ## History
 The original cowsay program, written in Perl, was created by Tony Monroe, with suggestions from Shannon Appel and contributions from Anthony Polito, as a whimsical program for GNU/Linux systems. It served as a creative output mechanism, generating ASCII art of a cow uttering the input text.
 
+## Contributing
+If you have any suggestions, ideas, or feedback to enhance the project, please feel free to create an issue. Your collaboration is welcomed to make this project a bit better.
+
 ## Note
-This project is made out of pure love for .NET C#. All the code here is 100% original.
+The code is 100% original.
