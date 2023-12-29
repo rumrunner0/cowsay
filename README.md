@@ -34,15 +34,15 @@ Then, you can use the tool with the following commands:
 ```shell
 # with default entity (cow)
 $ cowsay
-$ cowsay --phrase "Hello, World!"
+$ cowsay --phrase "Hello, world!"
 
 # with specific entity (cow)
 $ cowsay --entity-name "cow"
-$ cowsay --entity-name "cow" --phrase "Hello, World!"
+$ cowsay --entity-name "cow" --phrase "Hello, world!"
 
 # with specific entity (elephant)
 $ cowsay --entity-name "elephant"
-$ cowsay --entity-name "elephant" --phrase "Hello, World!"
+$ cowsay --entity-name "elephant" --phrase "Hello, world!"
 ```
 
 Also, you can get more information about the tool with the following commands:
