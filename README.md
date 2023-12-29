@@ -4,8 +4,8 @@ ASCII-entities that can repeat phrases.
 This repository contains the `Rumrunner0.Cowsay` class library and `Rumrunner0.Cowsay.Tool` CLI tool. All the content in the repository is an original work created as a personal project, and serves as a .NET C# adaptation of the original cowsay program.
 
 [![License](https://img.shields.io/github/license/rumrunner0/cowsay?label=license)](https://github.com/rumrunner0/cowsay/blob/main/LICENSE)
-[![NuGet Package: Rumrunner0.Cowsay](https://img.shields.io/nuget/v/Rumrunner0.Cowsay?label=nuget%3A%Rumrunner0.Cowsay)](https://www.nuget.org/packages/Rumrunner0.Cowsay)
-[![NuGet Package: Rumrunner0.Cowsay.Tool](https://img.shields.io/nuget/v/Rumrunner0.Cowsay.Tool?label=nuget%3A%Rumrunner0.Cowsay.Tool)](https://www.nuget.org/packages/Rumrunner0.Cowsay.Tool)
+[![NuGet Package: Rumrunner0.Cowsay](https://img.shields.io/nuget/v/Rumrunner0.Cowsay?label=nuget%3A%20Rumrunner0.Cowsay)](https://www.nuget.org/packages/Rumrunner0.Cowsay)
+[![NuGet Package: Rumrunner0.Cowsay.Tool](https://img.shields.io/nuget/v/Rumrunner0.Cowsay.Tool?label=nuget%3A%20Rumrunner0.Cowsay.Tool)](https://www.nuget.org/packages/Rumrunner0.Cowsay.Tool)
 
 ## Description
 Cowsay is a fun and configurable speaking cow (not only) program. Originally developed for GNU/Linux, this C# adaptation brings the fun of the original cowsay to the .NET ecosystem.
