@@ -9,14 +9,14 @@ namespace Rumble.Cowsay;
 public sealed class EchoEntity : IEchoEntity
 {
 	/// <summary>
-	/// Min length of the phrase line.
+	/// Minimum length of the phrase line.
 	/// </summary>
-	private static readonly int _minLineLength = 1;
+	private const int _minLineLength = 1;
 
 	/// <summary>
-	/// Max length of the phrase line.
+	/// Maximum length of the phrase line.
 	/// </summary>
-	private static readonly int _maxLineLength = 60;
+	private const int _maxLineLength = 60;
 
 	/// <summary>
 	/// Name of the entity.
@@ -24,18 +24,18 @@ public sealed class EchoEntity : IEchoEntity
 	private readonly string _name;
 
 	/// <summary>
-	/// Phrase that represents an entity.
+	/// Phrase that represents the entity.
 	/// </summary>
 	private readonly string _defaultPhrase;
 
 	/// <summary>
-	/// ASCII art of an entity.
+	/// ASCII art of the entity.
 	/// </summary>
 	private readonly string _appearance;
 
-	/// <summary>
-	/// Constructor of the instance.
-	/// </summary>
+	///
+	/// <inheritdoc cref="EchoEntity" />
+	///
 	public EchoEntity()
 	{
 		this._name = string.Empty;
@@ -73,7 +73,7 @@ public sealed class EchoEntity : IEchoEntity
 	///
 	public string Speak()
 	{
-		return Echo(phrase: _defaultPhrase);
+		return Echo(this._defaultPhrase);
 	}
 
 	///
@@ -92,9 +92,9 @@ public sealed class EchoEntity : IEchoEntity
 		var phraseLength = phrase.Length;
 		return
 		(
-			$@"{Symbol.TopLeftCorner}{new (Symbol.HorizontalLine, phraseLength+2)}{Symbol.TopRightCorner}" + Environment.NewLine +
-			$@"{Symbol.VerticalLine} {phrase} {Symbol.VerticalLine}" + Environment.NewLine +
-			$@"{Symbol.BottomLeftCorner}{new (Symbol.HorizontalLine, phraseLength+2)}{Symbol.BottomRightCorner}" + Environment.NewLine +
+			$"{Symbol.TopLeftCorner}{new (Symbol.HorizontalLine, phraseLength+2)}{Symbol.TopRightCorner}" + Environment.NewLine +
+			$"{Symbol.VerticalLine} {phrase} {Symbol.VerticalLine}" + Environment.NewLine +
+			$"{Symbol.BottomLeftCorner}{new (Symbol.HorizontalLine, phraseLength+2)}{Symbol.BottomRightCorner}" + Environment.NewLine +
 			StickWithOffset(phraseLength + 4) + Environment.NewLine +
 			AppearanceWithOffset(phraseLength + 7)
 		);
@@ -103,7 +103,7 @@ public sealed class EchoEntity : IEchoEntity
 	/// <summary>
 	/// Stick part of the ASCII art.
 	/// </summary>
-	/// <param name="offsetLength">Length of the offset by which the stick is shifted</param>
+	/// <param name="offsetLength">Length of the offset by which the stick is shifted.</param>
 	private static string StickWithOffset(int offsetLength)
 	{
 		var offset = new string(Symbol.Space, offsetLength);
@@ -115,13 +115,13 @@ public sealed class EchoEntity : IEchoEntity
 	}
 
 	/// <summary>
-	/// <see cref="_appearance"/> with added offset.
+	/// <see cref="Appearance"/> with added offset.
 	/// </summary>
-	/// <param name="offsetLength">Length of the offset by which the <see cref="_appearance"/> is shifted</param>
-	/// <returns></returns>
+	/// <param name="offsetLength">Length of the offset by which the <see cref="Appearance"/> is shifted.</param>
+	/// <returns><see cref="Appearance"/> with added offset.</returns>
 	private string AppearanceWithOffset(int offsetLength)
 	{
 		var offset = new string(Symbol.Space, offsetLength);
-		return $@"{offset}{_appearance.Replace(oldValue: Environment.NewLine, newValue: $"{Environment.NewLine}{offset}")}";
+		return $"{offset}{this._appearance.Replace(Environment.NewLine, $"{Environment.NewLine}{offset}")}";
 	}
 }

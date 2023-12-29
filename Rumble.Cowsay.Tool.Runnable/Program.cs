@@ -4,33 +4,14 @@ using System.Text;
 using Cocona;
 using Humanizer;
 using Rumble.Cowsay;
-using Rumble.Essentials;
-// using Serilog;
-
-// ReSharper disable MissingIndent
 
 Console.InputEncoding = Encoding.UTF8;
 Console.OutputEncoding = Encoding.UTF8;
 
-// Log.Logger = Essential.OfType<ILogger>();
 CoconaApp.Run((string? entityName, string? phrase, int? lineLength) =>
 {
-	// var logger = Log.Logger.ForContext<Program>();
-	// logger.Information("Application has been started");
-
-	var existingEntities = new []
-	{
-		EchoingEntity.Cow,
-		EchoingEntity.Elephant
-	};
-
-	var entity =
-	(
-		entityName is not null &&
-		existingEntities.SingleOrDefault(entity => entity.Name.Equals(entityName.Kebaberize())) is { } entry
-	)
-	? entry
-	: existingEntities.First();
+	var entities = (EchoEntity[]) [EchoingEntity.Cow, EchoingEntity.Elephant];
+	var entity = entities.FirstOrDefault(e => e.Name.Equals(entityName?.Kebaberize())) ?? entities.First();
 
 	Console.WriteLine
 	(
@@ -41,10 +22,4 @@ CoconaApp.Run((string? entityName, string? phrase, int? lineLength) =>
 			_ => entity.Speak()
 		}
 	);
-
-	// logger.Information("Application has been shut down");
-	// logger.Information("");
 });
-
-// Log.CloseAndFlush();
-Environment.Exit(EnvironmentExitCode.Success);
