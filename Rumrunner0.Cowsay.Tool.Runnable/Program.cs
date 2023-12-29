@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using Cocona;
 using Humanizer;
-using Rumble.Cowsay;
+using Rumrunner0.Cowsay;
 
 Console.InputEncoding = Encoding.UTF8;
 Console.OutputEncoding = Encoding.UTF8;

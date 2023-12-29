@@ -1,7 +1,7 @@
 ﻿using System;
 using Humanizer;
 
-namespace Rumble.Cowsay;
+namespace Rumrunner0.Cowsay;
 
 ///
 /// <inheritdoc />

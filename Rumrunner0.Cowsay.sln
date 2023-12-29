@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumble.Cowsay", "Rumble.Cowsay\Rumble.Cowsay.csproj", "{8E89431C-0F33-4109-96EA-306A5B865BFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumrunner0.Cowsay", "Rumrunner0.Cowsay\Rumrunner0.Cowsay.csproj", "{8E89431C-0F33-4109-96EA-306A5B865BFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumble.Cowsay.Tool.Runnable", "Rumble.Cowsay.Tool.Runnable\Rumble.Cowsay.Tool.Runnable.csproj", "{A34B3FF9-B3C8-4BD6-A0BE-80C4CA709D7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumrunner0.Cowsay.Tool.Runnable", "Rumrunner0.Cowsay.Tool.Runnable\Rumrunner0.Cowsay.Tool.Runnable.csproj", "{A34B3FF9-B3C8-4BD6-A0BE-80C4CA709D7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

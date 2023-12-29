@@ -1,4 +1,4 @@
-﻿namespace Rumble.Cowsay;
+﻿namespace Rumrunner0.Cowsay;
 
 /// <summary>
 /// Predefined symbols.

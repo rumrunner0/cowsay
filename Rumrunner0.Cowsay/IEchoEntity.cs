@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Rumble.Cowsay;
+namespace Rumrunner0.Cowsay;
 
 /// <summary>
 /// Entity that echoes phrases.

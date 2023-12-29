@@ -1,33 +1,33 @@
 # cowsay
 ASCII-entities that can repeat phrases.
 
-This repository contains the `Rumble.Cowsay` class library and `Rumble.Cowsay.Tool` CLI tool. All the content in the repository is an original work created as a personal project, and serves as a .NET C# adaptation of the original cowsay program.
+This repository contains the `Rumrunner0.Cowsay` class library and `Rumrunner0.Cowsay.Tool` CLI tool. All the content in the repository is an original work created as a personal project, and serves as a .NET C# adaptation of the original cowsay program.
 
 [![License](https://img.shields.io/github/license/rumrunner0/cowsay?label=license)](https://github.com/rumrunner0/cowsay/blob/main/LICENSE)
-[![NuGet Package: Rumble.Cowsay](https://img.shields.io/nuget/v/Rumble.Cowsay?label=nuget%3A%20Rumble.Cowsay)](https://www.nuget.org/packages/Rumble.Cowsay)
-[![NuGet Package: Rumble.Cowsay.Tool](https://img.shields.io/nuget/v/Rumble.Cowsay.Tool?label=nuget%3A%20Rumble.Cowsay.Tool)](https://www.nuget.org/packages/Rumble.Cowsay.Tool)
+[![NuGet Package: Rumrunner0.Cowsay](https://img.shields.io/nuget/v/Rumrunner0.Cowsay?label=nuget%3A%Rumrunner0.Cowsay)](https://www.nuget.org/packages/Rumrunner0.Cowsay)
+[![NuGet Package: Rumrunner0.Cowsay.Tool](https://img.shields.io/nuget/v/Rumrunner0.Cowsay.Tool?label=nuget%3A%Rumrunner0.Cowsay.Tool)](https://www.nuget.org/packages/Rumrunner0.Cowsay.Tool)
 
 ## Description
 Cowsay is a fun and configurable speaking cow (not only) program. Originally developed for GNU/Linux, this C# adaptation brings the fun of the original cowsay to the .NET ecosystem.
 
 ## Usage
 
-### Rumble.Cowsay Library
+### Rumrunner0.Cowsay Library
 
 ```csharp
 using System;
-using Rumble.Cowsay;
+using Rumrunner0.Cowsay;
 
 var entity = EchoingEntity.Cow;
 Console.WriteLine(entity.Speak());
 Console.WriteLine(entity.Echo("Hello, world!"));
 ```
 
-### Rumble.Cowsay.Tool
+### Rumrunner0.Cowsay.Tool
 
 To install the tool globally, use the following command:
 ```shell
-$ dotnet tool install --global Rumble.Cowsay.Tool
+$ dotnet tool install --global Rumrunner0.Cowsay.Tool
 ```
 
 Then, you can use the tool with the following commands:
