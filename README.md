@@ -37,12 +37,12 @@ $ cowsay
 $ cowsay --phrase "Hello, World!"
 
 # with specific entity (cow)
-$ cowsay --entity-name cow
-$ cowsay --entity-name cow --phrase "Hello, World!"
+$ cowsay --entity-name "cow"
+$ cowsay --entity-name "cow" --phrase "Hello, World!"
 
 # with specific entity (elephant)
-$ cowsay --entity-name elephant
-$ cowsay --entity-name elephant --phrase "Hello, World!"
+$ cowsay --entity-name "elephant"
+$ cowsay --entity-name "elephant" --phrase "Hello, World!"
 ```
 
 Also, you can get more information about the tool with the following commands:
