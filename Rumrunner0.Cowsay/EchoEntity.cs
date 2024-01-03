@@ -115,10 +115,10 @@ public sealed class EchoEntity : IEchoEntity
 	}
 
 	/// <summary>
-	/// <see cref="Appearance"/> with added offset.
+	/// <see cref="Appearance" /> with added offset.
 	/// </summary>
-	/// <param name="offsetLength">Length of the offset by which the <see cref="Appearance"/> is shifted.</param>
-	/// <returns><see cref="Appearance"/> with added offset.</returns>
+	/// <param name="offsetLength">Length of the offset by which the <see cref="Appearance" /> is shifted.</param>
+	/// <returns><see cref="Appearance" /> with added offset.</returns>
 	private string AppearanceWithOffset(int offsetLength)
 	{
 		var offset = new string(Symbol.Space, offsetLength);

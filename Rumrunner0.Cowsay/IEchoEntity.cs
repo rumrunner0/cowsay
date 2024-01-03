@@ -18,7 +18,7 @@ internal interface IEchoEntity
 	/// </summary>
 	/// <param name="phrase">The phrase to be echoed by the entity.</param>
 	/// <returns>Formatted string that represents the entity echoing the phrase.</returns>
-	/// <exception cref="ArgumentNullException">Thrown when <paramref name="phrase"/> is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="phrase" /> is null.</exception>
 	string Echo(string phrase);
 
 	/// <summary>
@@ -27,7 +27,7 @@ internal interface IEchoEntity
 	/// <param name="phrase">The phrase to be echoed by the entity.</param>
 	/// <param name="maxLineLength">The max length of the line.</param>
 	/// <returns>Formatted string that represents the entity echoing the phrase.</returns>
-	/// <exception cref="ArgumentNullException">Thrown when <paramref name="phrase"/> is null.</exception>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxLineLength"/> is out of allowed range.</exception>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="phrase" /> is null.</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxLineLength" /> is out of allowed range.</exception>
 	string Echo(string phrase, int maxLineLength);
 }
