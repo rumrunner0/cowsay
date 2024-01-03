@@ -1,38 +1,40 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net8</TargetFramework>
 		<LangVersion>12</LangVersion>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<Platform>AnyCPU</Platform>
 		<Configurations>Debug;Release</Configurations>
 		<OutputType>Exe</OutputType>
-		<SignAssembly>true</SignAssembly>
-		<AssemblyOriginatorKeyFile>../../documents/rumrunner0_cowsay.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 
 	<PropertyGroup>
 		<IsPackable>true</IsPackable>
-		<PackageId>Rumrunner0.Cowsay.Tool</PackageId>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>cowsay</ToolCommandName>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>0.1.1</Version>
-		<AssemblyVersion>0.1.1</AssemblyVersion>
-		<FileVersion>0.1.1.0</FileVersion>
+		<PackageId>Rumrunner0.Cowsay.Tool</PackageId>
+		<Version>0.1.2</Version>
 		<Title>Cowsay</Title>
 		<Authors>Roman Malyi</Authors>
-		<Copyright>Copyright (c) Roman Malyi 2023.</Copyright>
+		<Copyright>Copyright (c) Roman Malyi 2024.</Copyright>
 		<RepositoryUrl>https://github.com/rumrunner0/cowsay</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<NeutralLanguage>en-US</NeutralLanguage>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<PackAsTool>true</PackAsTool>
-		<ToolCommandName>cowsay</ToolCommandName>
+		<Company>Roman Malyi</Company>
+		<Product>Cowsay</Product>
+		<AssemblyVersion>0.1.2</AssemblyVersion>
+		<FileVersion>0.1.2.0</FileVersion>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>../../documents/rumrunner0_cowsay.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -50,12 +52,20 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Rumrunner0.Cowsay\Rumrunner0.Cowsay.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Cocona" Version="2.2.0" />
-		<PackageReference Include="Rumrunner0.UuMatter.Console" Version="0.1.1" />
+		<None Remove="appsettings.json" />
+		<Content Include="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<None Remove="appsettings.Development.json" />
+		<Content Include="appsettings.Development.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<DependentUpon>appsettings.json</DependentUpon>
+		</Content>
+		<None Remove="appsettings.Production.json" />
+		<Content Include="appsettings.Production.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<DependentUpon>appsettings.json</DependentUpon>
+		</Content>
 	</ItemGroup>
 
 	<PropertyGroup>
@@ -68,24 +78,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Rumrunner0.Cowsay\Rumrunner0.Cowsay.csproj" />
+	</ItemGroup>
 
-		<None Remove="appsettings.json" />
-		<Content Include="appsettings.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-
-		<None Remove="appsettings.Development.json" />
-		<Content Include="appsettings.Development.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<DependentUpon>appsettings.json</DependentUpon>
-		</Content>
-
-		<None Remove="appsettings.Production.json" />
-		<Content Include="appsettings.Production.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<DependentUpon>appsettings.json</DependentUpon>
-		</Content>
-
+	<ItemGroup>
+		<PackageReference Include="Cocona" Version="2.2.0" />
+		<PackageReference Include="Rumrunner0.UuMatter.Console" Version="0.1.6" />
 	</ItemGroup>
 
 </Project>
